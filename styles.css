@@ -1,407 +1,235 @@
 /* General Variables */
 :root {
-    --primary-color: #e63946;
-    --secondary-color: #ff9f1c;
-    --background-color: #1e1e2f;
-    --light-mode-bg: #f1f1f1;
-    --light-mode-text: #121212;
-    --dark-mode-bg: #1e1e2f;
-    --dark-mode-text: #ffffff;
-    --highlight-color: #ff9f1c;
-    --hover-color: #ff5252;
-    --focus-outline: #ff9f1c;
-  }
-  
-  /* General Body Styles */
-  body {
+    --primary-color: #B22222; /* Firebrick */
+    --secondary-color: #CD5C5C; /* Indian Red */
+    --background-color: #1C1C1C; /* Dark Gray */
+    --light-mode-bg: #2A2A2E; /* Charcoal */
+    --light-mode-text: #E0E0E0; /* Light Gray */
+    --dark-mode-bg: #121212; /* Almost Black */
+    --dark-mode-text: #F5F5F5; /* Soft White */
+    --highlight-color: #FF6F61; /* Coral */
+    --hover-color: #D43F3F; /* Deep Coral */
+    --focus-outline: #FF6F61; /* Coral */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Subtle Shadow */
+    --border-radius: 10px;
+    --transition-speed: 0.25s;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* Global Styles */
+body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--background-color), #2a2438);
+    padding: 20px;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
     color: var(--dark-mode-text);
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
-    animation: fadeIn 1s ease-in-out;
-  }
-  a{
+    line-height: 1.6;
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+a {
     text-decoration: none;
-    color: white;
-  }
-  
-  /* Fade-in Animation */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Dark Mode Styles */
- /* Dark Mode Styles */
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+/* Dark Mode */
 body.dark-mode {
-    background: var(--dark-mode-bg);
-    color: var(--dark-mode-text);
-  }
-  
-  body.dark-mode .container {
-    background: rgba(0, 0, 0, 0.1); /* Subtle dark background for the container */
-  }
-  
-  body.dark-mode .character-title {
-    background: linear-gradient(to right, #f39c12, #d35400); /* Adjusted gradient for dark mode */
-  }
-  
-  body.dark-mode .button {
-    background: linear-gradient(90deg, #d35400, #f39c12);
-  }
-  
-  body.dark-mode .description {
-    background: rgba(255, 255, 255, 0.1); /* Lighter background for better contrast */
-    color: var(--dark-mode-text);
-  }
-  
-  /* Spacing Adjustments for Dark Mode */
-  body.dark-mode .container {
-    padding: 40px; /* Increase padding for better readability */
-    margin: 20px; /* Add margin for separation */
-  }
-  
-  body.dark-mode .content {
-    gap: 40px; /* Increase gap between content sections */
-  }
-  
-  body.dark-mode .description {
-    padding: 30px; /* Add more padding inside the description box */
-    margin-bottom: 20px; /* Space below the description */
-  }
-  
-  body.dark-mode .image {
-    margin: 20px; /* Ensure spacing around images */
-  }
-  
-  /* Container */
-  .container {
+    background-color: var(--dark-mode-bg);
+    color: var(--light-mode-text);
+}
+
+/* Container */
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1000px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .container:hover {
+    max-width: 900px;
+    padding: 20px;
+    background-color: #242424; /* Slightly lighter for contrast */
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.container:hover {
     transform: scale(1.02);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Title Styling */
-  .character-title {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    font-weight: bold;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    animation: textGlow 2s infinite alternate;
-    text-align: center;
-  }
-  
-  @keyframes textGlow {
-    from {
-      text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
-    }
-    to {
-      text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--primary-color);
-    }
-  }
-  
-  /* Content Layout */
-  .content {
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+/* Title */
+.character-title-container {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-  
-  /* Image Styling */
-  .image {
-    flex: 1;
-    max-width: 250px;
-    margin: auto;
-  }
-  
-  .image img {
-    width: 100%;
-    border: 3px solid var(--dark-mode-text);
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .image:hover img {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.7);
-  }
-  
- /* Description Styling */
-/* General Styling for the Description */
-.description {
-    flex: 2;
-    max-width: 700px;
-    padding: 40px;
-    text-align: justify;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.8)); /* Subtle gradient background */
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7), inset 0 4px 10px rgba(255, 255, 255, 0.1); /* Depth with shadows */
-    color: var(--dark-mode-text);
-    line-height: 1.8;
-    letter-spacing: 0.3px;
-    position: relative;
-    margin: 30px auto; /* Center and space from other sections */
-    overflow: hidden; /* Clip decorative effects */
-  }
-  
-  /* Glow Effect Around the Description */
-  .description::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(60deg, rgba(255, 105, 135, 0.3), rgba(255, 195, 113, 0.3));
-    z-index: -1; /* Behind the content */
-    filter: blur(80px);
-    transform: rotate(0deg);
-    animation: glowingBorder 6s linear infinite; /* Rotating glow animation */
-  }
-  
-  /* Highlight Styling */
-  .description span.highlight {
-    color: var(--highlight-color);
-    font-weight: bold;
-    font-style: italic;
-    background: rgba(255, 223, 186, 0.2); /* Light background for contrast */
-    padding: 2px 6px;
-    border-radius: 5px;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  
-  .description span.highlight:hover {
-    background: rgba(255, 105, 135, 0.4); /* Darker hover effect */
-    color: var(--hover-color);
-  }
-  
-  /* Paragraph Styling */
-  .description p {
-    margin-bottom: 20px; /* Space between paragraphs */
-  }
-  
-  .description p:last-child {
-    margin-bottom: 0; /* Remove margin for the last paragraph */
-  }
-  
-  /* Unordered List Styling (For Abilities) */
-  .description ul {
-    margin-top: 20px;
-    padding-left: 20px;
-    list-style-type: disc;
-  }
-  
-  .description ul li {
-    margin-bottom: 10px; /* Space between list items */
-    line-height: 1.6;
-    color: var(--dark-mode-text); /* Match text color */
-  }
-  
-  .description ul li span.highlight {
-    color: var(--highlight-color);
-    font-weight: bold;
-  }
-  
-  /* Learn More Link */
-  .description a {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 1rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    padding: 10px 20px;
-    border-radius: 25px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  
-  .description a:hover {
-    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-    transform: translateY(-3px); /* Lift on hover */
-  }
-  
-  /* Glow Animation */
-  @keyframes glowingBorder {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  
-  
-  /* Button Styling */
-  .button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: var(--dark-mode-text);
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
-  }
-  
-  .button:focus {
-    outline: 2px solid var(--focus-outline);
-    outline-offset: 4px;
-  }
-  
-  /* Countdown Timer */
-  .countdown {
-    font-size: 1.5rem;
-    color: var(--highlight-color);
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  /* Lightbox */
-  #lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-  }
-  
-  #lightbox.active {
-    display: flex;
-  }
-  
-  #lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-  }
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px var(--shadow-color);
+    margin-bottom: 20px;
+}
 
-  .navigation-buttons {
+.character-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    letter-spacing: 1px;
+    transition: color var(--transition-speed);
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.character-title::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background: var(--highlight-color);
+    border-radius: 2px;
+    transition: width var(--transition-speed);
+}
+
+.character-title:hover::after {
+    width: 70%;
+}
+
+/* Content */
+.content {
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
     justify-content: center;
-    gap: 20px; /* Space between buttons */
-    margin-top: 40px; /* Space above the buttons */
-  }
-  
-  /* Buttons */
-  .navigation-buttons .button {
-    padding: 15px 30px;
+    gap: 20px;
+}
+
+/* Image */
+.image img {
+    width: 100%;
+    border: 2px solid var(--light-mode-text);
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px var(--shadow-color);
+}
+
+/* Description */
+.description {
+    max-width: 700px;
+    padding: 20px;
+    text-align: justify;
+    font-size: 1rem;
+    background-color: #2A2A2A; /* Neutral contrast */
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    transition: background var(--transition-speed);
+}
+
+.description span.highlight {
+    color: var(--highlight-color);
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+.description span.highlight:hover {
+    background-color: var(--hover-color);
+    color: #fff;
+}
+
+.description a {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed), transform var(--transition-speed);
+}
+
+.description a:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+/* Button */
+.button {
+    padding: 10px 15px;
     font-size: 1rem;
     font-weight: bold;
-    color: var(--dark-mode-text);
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    background-color: var(--primary-color);
     border: none;
-    border-radius: 25px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .navigation-buttons .button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
-  }
-  
-  .navigation-buttons .button:focus {
-    outline: 2px solid var(--focus-outline);
-    outline-offset: 4px;
-  }
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background var(--transition-speed), transform var(--transition-speed);
+}
 
-  
-  /* Social Sharing Buttons */
-  .share-button {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .share-button img {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .share-button img:hover {
-    transform: scale(1.2);
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+.button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .content {
-      flex-direction: column;
-      gap: 20px;
+        flex-direction: column;
+        gap: 15px;
     }
-  
-    .description {
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
+
     .character-title {
-      font-size: 2.5rem;
+        font-size: 2rem;
     }
-  
+
     .description {
-      font-size: 0.85rem;
+        font-size: 0.9rem;
     }
-  
+
     .image {
-      max-width: 200px;
+        max-width: 300px;
     }
-  
+}
+
+@media (max-width: 480px) {
+    .character-title {
+        font-size: 1.8rem;
+    }
+
+    .description {
+        font-size: 0.8rem;
+    }
+
     .button {
-      font-size: 0.9rem;
-      padding: 8px 15px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
     }
-  }
-  
+}
+
+
   
   

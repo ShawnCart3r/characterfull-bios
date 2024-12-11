@@ -87,3 +87,4 @@ window.addEventListener("scroll", () => {
       description.classList.add("active");
     }
   });
+  
